@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+
+            <div class="card border-0 shadow rounded-4">
+                <div class="card-body p-4">
+
+                    <h3 class="text-center mb-4 fw-bold">Book Your Travel</h3>
+
+                    <div class="mb-4 p-3 bg-light rounded">
+                        <h5 class="mb-1">{{ travel_option.name }}</h5>
+                        <p class="mb-1 text-muted">{{ travel_option.source }} → {{ travel_option.destination }}</p>
+                        <p class="mb-0 text-primary fw-semibold">Price per seat: ${{ travel_option.price }}</p>
+                        <p class="mb-0 text-danger fw-semibold">Seats left: {{ travel_option.available_seats }}</p>
+                        <p class="mb-0 text-success fw-semibold">Date And Time: {{ travel_option.date_and_time }}</p>
+
+                    </div>
+
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label class="form-label">Booking for</label>
+                            <input type="text" class="form-control" value="{{ request.user.username }}" readonly>
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.number_of_seats.label_tag }}
+                            {{ form.number_of_seats }}
+                            {% if form.number_of_seats.errors %}
+                                <div class="text-danger small">{{ form.number_of_seats.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Total Price</label>
+                            <input type="text" id="totalPrice" class="form-control" readonly data-price="{{ travel_option.price }}">
+
+                        </div>
+
+                        <button type="submit" style="background: linear-gradient(90deg, #6a11cb, #2575fc); color:white" class="btn  w-100 py-2 fw-semibold">
+                            Confirm Booking
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="{% static "travel_app/booking.js" %}"></script>
+
+
+{% endblock content %}
+
+
+
+
+
+

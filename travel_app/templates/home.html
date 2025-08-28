@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+    <script src="{% static 'travel_app/home.js' %}"></script>
+    <div id="citySlider" class="carousel slide mb-5 shadow" data-bs-ride="carousel" style="border-radius: 20px; overflow:hidden;">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'images/image1.jpg' %}" class="d-block w-100" style="height:400px; object-fit:cover;">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Experience Delhi</h5>
+                    <p>Where history meets modern India.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/image2.jpg' %}" class="d-block w-100" style="height:400px; object-fit:cover;">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Magical Chefchaouen</h5>
+                    <p>The Blue Pearl of Morocco.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/image3.jpg' %}" class="d-block w-100" style="height:400px; object-fit:cover;">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Beautiful Bali</h5>
+                    <p>Island of Gods and Paradise Beaches.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#citySlider" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#citySlider" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+
+    <div class="card shadow-sm p-4 mb-5">
+        <h2 class="text-center mb-4">Find Your Trip</h2>
+        <form id="search-form" class="row g-3">
+            <div class="col-md-3">
+                <label for="type" class="form-label">Transport Type</label>
+                <select name="type" id="type" class="form-select filter">
+                    <option value="">All</option>
+                    {% for t in type_choices %}
+                        <option value="{{ t.0 }}" {% if request.GET.type == t.0 %}selected{% endif %}>{{ t.1 }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label fw-semibold">Source</label>
+                <input type="text" name="source" id="source" class="form-control filter" placeholder="Enter city">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label fw-semibold">Destination</label>
+                <input type="text" name="destination" id="destination" class="form-control filter" placeholder="Enter city">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label fw-semibold">Date</label>
+                <input type="date" name="date" id="date" class="form-control filter">
+            </div>
+        </form>
+    </div>
+
+    <div id="results" class="row g-4">
+        {% include 'travel_cards.html' with travel_options=travel_options %}
+    </div>
+</div>
+
+{% endblock %}

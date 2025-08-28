@@ -1,0 +1,33 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment / virtual environments
+.env
+venv/
+ENV/
+env/
+*.env
+
+# history
+.history/
+
+# Logs
+*.log
+
+# IDEs / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Backup / temporary files
+*.bak
+*.swp
+*.swo
+
+# MySQL configs (optional if you have local configs)
+/my.cnf
+
+
