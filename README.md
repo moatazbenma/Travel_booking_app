@@ -134,25 +134,25 @@ cd Travel_booking_app
 ## **Screenshots**
 
 **Home Page**
-![Home](screenshots/home.jpeg)
+![Home](travel_app/screenshots/home.jpeg)
 
 **Login**
-![login](screenshots/login.jpeg)
+![login](travel_app/screenshots/login.jpeg)
 
 **SignUp**
-![signup](screenshots/signup.jpeg)
+![signup](travel_app/screenshots/signup.jpeg)
 
 **Profile**
-![profile](screenshots/profile.jpeg)
+![profile](travel_app/screenshots/profile.jpeg)
 
 **Book**
-![book](screenshots/book.jpeg)
+![book](travel_app/screenshots/book.jpeg)
 
 **Bookings**
-![bookings](screenshots/bookings.jpeg)
+![bookings](travel_app/screenshots/bookings.jpeg)
 
 **Edit Profile**
-![edit profile](screenshots/Editprofile.jpeg)
+![edit profile](travel_app/screenshots/Editprofile.jpeg)
 
 
 
