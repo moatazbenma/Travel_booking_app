@@ -29,6 +29,7 @@ Thumbs.db
 
 # MySQL configs (optional if you have local configs)
 /my.cnf
-db.sqlite3/
+
+*.sqlite3
 
 
