@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,6 +28,7 @@ SECRET_KEY = 'django-insecure-c&n(59b&&d8*6$q-o@8um!ixl9v4y6e%%k67q#uux#462te#6d
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -74,16 +77,7 @@ WSGI_APPLICATION = 'travel_project.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'travel_booking_app',
-        'USER': 'mtz',
-        'PASSWORD': 'Mmoataz0000', 
-        'HOST': 'localhost',
-        'PORT': '3306',
-
-
-    }
+    "default": dj_database_url.config(default=config("DATABASE_URL"))
 }
 
 

@@ -27,7 +27,7 @@ A modern travel booking web application built with **Django** that allows users 
   - Travel option cards and image slider
 
 - **Database**
-  - MySQL (XAMPP)
+  - MySQL
   - Data integrity enforced via Django models
 
 - **Extras**
@@ -42,7 +42,7 @@ A modern travel booking web application built with **Django** that allows users 
 - **Backend:** Python, Django  
 - **Frontend:** HTML5, Bootstrap 5, JavaScript (AJAX)  
 - **Database:** MySQL  
-- **Deployment :** Render
+- **Deployment :** pythonanywhere
 
 
 ## **Installation & Setup**
