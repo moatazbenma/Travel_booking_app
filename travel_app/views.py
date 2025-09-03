@@ -10,7 +10,10 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+from .models import Booking
 
 # Create your views here.
 
@@ -101,7 +104,7 @@ def book(request, pk):
             travel_option.available_seats -= booking.number_of_seats
             travel_option.save()
 
-            return redirect("bookings")
+            return redirect('confirmation', pk=booking.id)
     else:
         form = BookingForm(travel_option=travel_option)
 
@@ -145,3 +148,19 @@ def update_profile(request):
 
     return render(request, "profile_update.html", {"form": form})
 
+
+
+
+def generate_pdf(request, booking_id):
+    booking = Booking.objects.get(id=booking_id)
+    template = get_template("pdf_template.html")
+    html = template.render({"booking": booking})
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="booking_{booking.id}.pdf"'
+    pisa.CreatePDF(html, dest=response)
+    return response
+
+
+def booking_confirmation(request, pk):
+    booking = get_object_or_404(Booking, id=pk, user=request.user)
+    return render(request, 'confirmation.html', {'booking': booking})
